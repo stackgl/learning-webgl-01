@@ -1,0 +1,27 @@
+{
+  "name": "learning-webgl-01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Learning WebGL Lesson 1 converted from vanilla WebGL to use stack.gl",
+  "scripts": {
+    "start": "wzrd index.js:bundle.min.js",
+    "prepublish": "browserify index.js | uglifyjs -cm > bundle.min.js"
+  },
+  "browserify": {
+    "transform": [
+      "glslify"
+    ]
+  },
+  "dependencies": {
+    "canvas-fit": "^1.2.0",
+    "gl-buffer": "^2.1.1",
+    "gl-context": "^0.1.1",
+    "gl-mat4": "^1.0.1",
+    "glslify": "^1.6.0"
+  },
+  "devDependencies": {
+    "browserify": "^8.0.3",
+    "uglify-js": "^2.4.16",
+    "wzrd": "^1.1.0"
+  }
+}
