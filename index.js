@@ -1,4 +1,5 @@
 var canvas   = document.body.appendChild(document.createElement('canvas'))
+var clear    = require('gl-clear')({ color: [0, 0, 0, 1] })
 var gl       = require('gl-context')(canvas, render)
 var glBuffer = require('gl-buffer')
 var mat4     = require('gl-mat4')
@@ -33,9 +34,11 @@ function render() {
   var width = gl.drawingBufferWidth
   var height = gl.drawingBufferHeight
 
+  // Clear the screen and set the viewport before
+  // drawing anything
+  clear(gl)
   gl.viewport(0, 0, width, height)
-  gl.clearColor(0, 0, 0, 1)
-  gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
+
   gl.enableVertexAttribArray(0)
 
   // Calculate projection matrix
