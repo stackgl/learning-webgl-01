@@ -39,8 +39,6 @@ function render() {
   clear(gl)
   gl.viewport(0, 0, width, height)
 
-  gl.enableVertexAttribArray(0)
-
   // Calculate projection matrix
   mat4.perspective(projectionMatrix, Math.PI / 4, width / height, 0.1, 100)
   // Calculate triangle's modelView matrix
