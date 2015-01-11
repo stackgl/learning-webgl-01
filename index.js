@@ -39,8 +39,6 @@ function render() {
   clear(gl)
   gl.viewport(0, 0, width, height)
 
-  gl.enableVertexAttribArray(0)
-
   // Calculate projection matrix
   mat4.perspective(projectionMatrix, Math.PI / 4, width / height, 0.1, 100)
   // Calculate triangle's modelView matrix
@@ -54,16 +52,17 @@ function render() {
   shader.bind()
   shader.uniforms.uProjection = projectionMatrix
 
+  // Enable attribute pointer
+  shader.attributes.aPosition.pointer()
+  
   // Draw the triangle
   triangle.bind()
   shader.uniforms.uModelView = triangleMatrix
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0)
   gl.drawArrays(gl.TRIANGLES, 0, triangle.length)
 
   // Draw the square
   square.bind()
   shader.uniforms.uModelView = squareMatrix
-  gl.vertexAttribPointer(0, 3, gl.FLOAT, false, 0, 0)
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 }
 
