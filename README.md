@@ -15,7 +15,7 @@ Get the project set up and running locally by running these commands from your
 terminal:
 
 ``` bash
-git clone git@github.com:stackgl/learning-webgl-01.git
+git clone https://github.com/stackgl/learning-webgl-01.git
 cd learning-webgl-01
 npm install
 npm start
