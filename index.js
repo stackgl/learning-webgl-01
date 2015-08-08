@@ -52,16 +52,15 @@ function render() {
   shader.bind()
   shader.uniforms.uProjection = projectionMatrix
 
-  // Enable attribute pointer
-  shader.attributes.aPosition.pointer()
-  
   // Draw the triangle
   triangle.bind()
+  shader.attributes.aPosition.pointer()
   shader.uniforms.uModelView = triangleMatrix
   gl.drawArrays(gl.TRIANGLES, 0, triangle.length)
 
   // Draw the square
   square.bind()
+  shader.attributes.aPosition.pointer()
   shader.uniforms.uModelView = squareMatrix
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 }
