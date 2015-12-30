@@ -18,7 +18,8 @@
     "gl-clear": "^1.0.0",
     "gl-context": "^0.1.1",
     "gl-mat4": "^1.0.1",
-    "glslify": "^1.6.0"
+    "gl-shader": "^4.1.1",
+    "glslify": "^5.0.0"
   },
   "devDependencies": {
     "browserify": "^8.0.3",
