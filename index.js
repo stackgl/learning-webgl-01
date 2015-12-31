@@ -3,12 +3,13 @@ var clear    = require('gl-clear')({ color: [0, 0, 0, 1] })
 var gl       = require('gl-context')(canvas, render)
 var glBuffer = require('gl-buffer')
 var mat4     = require('gl-mat4')
+var glShader = require('gl-shader')
 var glslify  = require('glslify')
 
-var shader = glslify({
-  frag: './shader.frag',
-  vert: './shader.vert'
-})(gl)
+var shader = glShader(gl,
+  glslify('./shader.vert'),
+  glslify('./shader.frag')
+)
 
 var triangleMatrix   = mat4.create()
 var squareMatrix     = mat4.create()
@@ -52,16 +53,15 @@ function render() {
   shader.bind()
   shader.uniforms.uProjection = projectionMatrix
 
-  // Enable attribute pointer
-  shader.attributes.aPosition.pointer()
-  
   // Draw the triangle
   triangle.bind()
+  shader.attributes.aPosition.pointer()
   shader.uniforms.uModelView = triangleMatrix
   gl.drawArrays(gl.TRIANGLES, 0, triangle.length)
 
   // Draw the square
   square.bind()
+  shader.attributes.aPosition.pointer()
   shader.uniforms.uModelView = squareMatrix
   gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4)
 }
